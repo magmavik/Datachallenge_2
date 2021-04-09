@@ -1,5 +1,6 @@
 #include "dataset.h"
 #include <random>
+#include <fstream>
 
 Dataset::Dataset()
 {
@@ -81,6 +82,22 @@ void Dataset::print()
         std::cout << data[i] << ", ";
     }
     std::cout << data[l-1] << std::endl << std::endl;
+}
+
+void Dataset::print_csv(std::string filename)
+{
+    std::ofstream file_out;
+    file_out.open(filename);
+    if(!file_out.good())
+    {
+        std::cerr << "ERROR: something went wrong with file" << filename << std::endl;
+    }
+
+    for(long int i=0; i<l-1; i++)
+    {
+        file_out << data[i] << ",";
+    }
+    file_out << data[l-1];
 }
 
 std::vector <bool> Dataset::items()

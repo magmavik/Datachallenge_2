@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "time.h"
+#include <string>
 
 class Dataset
 {
@@ -21,6 +22,7 @@ public:
     float f_probability();
 
     void print();
+    void print_csv(std::string filename);
     std::vector <bool> items();
 
 private:
