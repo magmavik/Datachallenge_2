@@ -53,6 +53,10 @@ void Dataset::regenerate(long int _l)
     regenerate();
 }
 
+void Dataset::change_probability(float _p)
+{
+    p = _p;
+}
 
 long int Dataset::length()
 {

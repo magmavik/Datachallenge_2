@@ -12,7 +12,9 @@ public:
     ~Dataset();
 
     void regenerate();
-    void regenerate(long int _l); //For changing dataset lenght, not yet developed
+    void regenerate(long int _l);
+
+    void change_probability(float _p);
 
     long int length();
     float t_probability();
