@@ -90,7 +90,7 @@ void Dataset::print_csv(std::string filename)
     file_out.open(filename);
     if(!file_out.good())
     {
-        std::cerr << "ERROR: something went wrong with file" << filename << std::endl;
+        std::cerr << "ERROR: something went wrong with file " << filename << std::endl;
     }
 
     for(long int i=0; i<l-1; i++)
