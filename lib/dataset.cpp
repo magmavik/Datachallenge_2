@@ -1,4 +1,5 @@
 #include "dataset.h"
+#include <random>
 
 Dataset::Dataset()
 {
@@ -8,9 +9,19 @@ Dataset::Dataset()
     std::cin >> l;
     while(l == 0)
     {
-        std::cerr << "ERROR: lenght of dsataset cannot be 0. Please insert again: " << std::endl;
+        std::cerr << "ERROR: length of dataset cannot be 0. Please insert again: " << std::endl;
         std::cin >> l;
     }
+
+    std::cout << "Insert wanted probability of getting true: ";
+    std::cin >> p;
+    while(p > 1)
+    {
+        std::cerr << "ERROR: probability can not be greater than one. Please insert again: " << std::endl;
+        std::cin >> p;
+    }
+
+
 
     regenerate();
 
@@ -26,14 +37,14 @@ void Dataset::regenerate()
 {
     data.clear();
 
-    for(double i=0; i<l; i++)
+    for(long int i=0; i<l; i++)
     {
-        bool appo = rand()%2 == 0;
+        bool appo = rand()/(RAND_MAX+1.0) < p;
         data.push_back(appo);
     }
 }
 
-void Dataset::regenerate(double _l)
+void Dataset::regenerate(long int _l)
 {
     data.clear();
 
@@ -42,17 +53,33 @@ void Dataset::regenerate(double _l)
     regenerate();
 }
 
+
+long int Dataset::length()
+{
+    return l;
+}
+
+float Dataset::t_probability()
+{
+    return p;
+}
+
+float Dataset::f_probability()
+{
+    return 1-p;
+}
+
 void Dataset::print()
 {
     std::cout << std::endl << "Dataset: " << std::endl; 
-    for(double i=0; i<l-1; i++)
+    for(long int i=0; i<l-1; i++)
     {
         std::cout << data[i] << ", ";
     }
     std::cout << data[l-1] << std::endl << std::endl;
 }
 
-double Dataset::length()
+std::vector <bool> Dataset::items()
 {
-    return l;
+    return data;
 }

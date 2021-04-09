@@ -12,15 +12,19 @@ public:
     ~Dataset();
 
     void regenerate();
-    void regenerate(double _l); //For changing dataset lenght, not yet developed
+    void regenerate(long int _l); //For changing dataset lenght, not yet developed
 
-    double length();
+    long int length();
+    float t_probability();
+    float f_probability();
 
     void print();
+    std::vector <bool> items();
 
 private:
 
-    double l;
+    long int l;
+    float p;
     std::vector <bool> data;
 
 };
