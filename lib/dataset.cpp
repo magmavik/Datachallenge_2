@@ -38,14 +38,14 @@ void Dataset::regenerate()
 {
     data.clear();
 
-    for(long int i=0; i<l; i++)
+    for(int i=0; i<l; i++)
     {
         bool appo = rand()/(RAND_MAX+1.0) < p;
         data.push_back(appo);
     }
 }
 
-void Dataset::regenerate(long int _l)
+void Dataset::regenerate(int _l)
 {
     data.clear();
 
@@ -59,7 +59,7 @@ void Dataset::change_probability(float _p)
     p = _p;
 }
 
-long int Dataset::length()
+int Dataset::length()
 {
     return l;
 }
@@ -77,7 +77,7 @@ float Dataset::f_probability()
 void Dataset::print()
 {
     std::cout << std::endl << "Dataset: " << std::endl; 
-    for(long int i=0; i<l-1; i++)
+    for(int i=0; i<l-1; i++)
     {
         std::cout << data[i] << ", ";
     }
@@ -90,10 +90,10 @@ void Dataset::print_csv(std::string filename)
     file_out.open(filename);
     if(!file_out.good())
     {
-        std::cerr << "ERROR: something went wrong with file " << filename << std::endl;
+        std::cerr << "ERROR: something went wrong with file" << filename << std::endl;
     }
 
-    for(long int i=0; i<l-1; i++)
+    for(int i=0; i<l-1; i++)
     {
         file_out << data[i] << ",";
     }

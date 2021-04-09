@@ -13,11 +13,11 @@ public:
     ~Dataset();
 
     void regenerate();
-    void regenerate(long int _l);
+    void regenerate(int _l);
 
     void change_probability(float _p);
 
-    long int length();
+    int length();
     float t_probability();
     float f_probability();
 
@@ -27,7 +27,7 @@ public:
 
 private:
 
-    long int l;
+    int l;
     float p;
     std::vector <bool> data;
 
