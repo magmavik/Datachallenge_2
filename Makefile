@@ -37,7 +37,8 @@
 CC = g++
 TARGET = independent
 OBJ_DIR = obj
-LIBS = -I/usr/include/libdrm -lglfw -ldl -lGL
+#LIBS = -I/usr/include/libdrm -lglfw -ldl -lGL
+LIBS =
 
 #	     +++ SEARCH FUNCTION AND DEPENDENT VARIABLES +++
 rwildcard = $(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2))
