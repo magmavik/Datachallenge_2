@@ -10,6 +10,7 @@ class Dataset
 {
 public:
     Dataset();
+    Dataset(int, float);
     ~Dataset();
 
     void regenerate();
@@ -27,9 +28,9 @@ public:
 
 private:
 
-    int l;
-    float p;
-    std::vector <bool> data;
+    int _l;
+    float _p;
+    std::vector <bool> _data;
 
 };
 
