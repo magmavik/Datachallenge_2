@@ -28,8 +28,11 @@ public:
 private:
 
     int l;
+    int n;
     float p;
+    float cp;
     std::vector <bool> data;
+    std::vector <int> cluster;
 
 };
 
