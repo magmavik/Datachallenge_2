@@ -173,17 +173,27 @@ void Dataset::set_clustersigma(float _sigma)
 
 // Getter methods
 
-const int Dataset::length()
+const int Dataset::get_length()
 {
     return l;
 }
 
-const std::vector <bool> Dataset::items()
-{
-    return data;
-}
-
-float Dataset::probability()
+const float Dataset::get_probability()
 {
     return p;
+}
+
+const int Dataset::get_clusternumber()
+{
+    return n;
+}
+
+const float Dataset::get_clustersigma()
+{
+    return cp;
+}
+
+const std::vector <bool> Dataset::get_items()
+{
+    return data;
 }

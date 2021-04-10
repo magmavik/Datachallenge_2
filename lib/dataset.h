@@ -37,20 +37,13 @@ public:
     
     // Getter methods
 
-    /**
-     * Gets dataset lenght.
-     */
-    const int length();
-
-    /**
-     * Gets dataset items.
-     */
-    const std::vector <bool> items();
+    const int get_length();
+    const float get_probability();
+    const int get_clusternumber();
+    const float get_clustersigma();
     
-    /**
-     * Gets base probability of getting true.
-     */
-    float probability();
+    const std::vector <bool> get_items();
+    
 
 private:
 
