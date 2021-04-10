@@ -17,7 +17,6 @@ float randomGauss(float mu, float sigma)
 {
     double u1,u2;
     int appo;
-
     do{
         appo=rand();
     }while(appo==0);
@@ -73,8 +72,18 @@ Dataset::Dataset()
 
 }
 
-Dataset::~Dataset()
+Dataset::Dataset(int _l, int _n, float _p, float _cp)
 {
+    l = _l;
+    n = _n;
+    p = _p;
+    cp = _cp;
+
+    regenerate();
+}
+
+Dataset::~Dataset()
+{  
 
 }
 
@@ -108,34 +117,15 @@ void Dataset::regenerate()
 
 }
 
-void Dataset::regenerate(int _l)
-{
-    data.clear();
-
-    l = _l;
+// void Dataset::regenerate(int _l)
+// {
+//     data.clear();
+//     l = _l;
     
-    regenerate();
-}
+//     regenerate();
+// }
 
-void Dataset::change_probability(float _p)
-{
-    p = _p;
-}
 
-int Dataset::length()
-{
-    return l;
-}
-
-float Dataset::t_probability()
-{
-    return p;
-}
-
-float Dataset::f_probability()
-{
-    return 1-p;
-}
 
 void Dataset::print()
 {
@@ -163,7 +153,37 @@ void Dataset::print_csv(std::string filename)
     file_out << data[l-1];
 }
 
-std::vector <bool> Dataset::items()
+// Setter methods
+
+void Dataset::set_probability(float _p)
+{
+    p = _p;
+}
+
+void Dataset::set_clusternumber(int _n)
+{
+    n = _n;
+}
+
+void Dataset::set_clustersigma(float _sigma)
+{
+    cp = _sigma;
+}
+
+
+// Getter methods
+
+const int Dataset::length()
+{
+    return l;
+}
+
+const std::vector <bool> Dataset::items()
 {
     return data;
+}
+
+float Dataset::probability()
+{
+    return p;
 }
