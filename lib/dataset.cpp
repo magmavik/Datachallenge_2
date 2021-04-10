@@ -95,7 +95,6 @@ void Dataset::regenerate()
     for(int i=0; i<n; i++)
     {
         int appo = rand()%(l-1);
-        std::cout << "Cluster position:" << appo << std::endl;
         cluster.push_back(appo);
     }
 
