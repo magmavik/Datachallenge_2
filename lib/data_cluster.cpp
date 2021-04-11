@@ -12,7 +12,6 @@ data_cluster::~data_cluster() {}
 
 //____________________________________________________________________
 
-
 //          methods          //
 
 void data_cluster::calc_distance_distribution()
@@ -59,8 +58,8 @@ void data_cluster::create_histogram()
     
     std::sort(_dist.begin(),_dist.end()); //sort vector
 
-    int max = *_dist.end();
-
+    int max = _dist.back();
+    
     data_cluster::_data_step = static_cast<float>(max)/static_cast<float>(N_step);
 
     int k = 0;
@@ -86,28 +85,31 @@ void data_cluster::create_histogram()
         }
     }
 
-    for(int i = 0; i < N_step; i++)
-    {
-        std::cout << "from " << static_cast<float>(i * _data_step) << " to " 
-                             << static_cast<float>((i+1)*_data_step) 
-                             << ":" << _hist[i] << std::endl; 
-    }
+    // for(int i = 0; i < N_step; i++)
+    // {
+    //     std::cout << "from " << my_round(i * _data_step) << " to " 
+    //                          << my_round((i+1)*_data_step) 
+    //                          << ":" << _hist[i] << std::endl; 
+    // }
 }
 
 
 void data_cluster::print_distance_csv()
 {
     std::ofstream of("./histogram.csv");
+    if(!of.good())
+    {
+        std::cerr << "ERROR: unable to create csv. Something went wrong.\n";
+        return; 
+    }
     of << "index,min,max,element\n";
     for( auto it = _hist.begin(); it != _hist.end(); ++it )
     {
         int i = std::distance(_hist.begin(),it);
-        of << i                 << ","
-           << (i * _data_step)  << ","
-           << ((i+1)*_data_step)<< ","
-           << *it               << "\n";
+        of << i   << ",";
+        of << my_round(i * _data_step)  << ",";
+        of << my_round((i+1)*_data_step)<< ",";
+        of << *it << "\n";
     }
-
-
 
 }

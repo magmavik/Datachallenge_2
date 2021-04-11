@@ -1,8 +1,13 @@
+#ifndef __data_cluster_h__
+#define __data_cluster_h__
+
 #include <iostream>     // std::cout;
 #include <vector>       // std::vector
 #include <algorithm>    // std::sort
-#include <fstream>
-
+#include <fstream>      // ofstream
+#include <math.h>       // round 
+#include <iomanip>      //set precision
+#include "./utility_lib.h"
 
 class data_cluster
 {
@@ -40,3 +45,5 @@ class data_cluster
         bool ERROR = false;
 
 };
+
+#endif
