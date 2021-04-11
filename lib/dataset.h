@@ -15,7 +15,7 @@ class Dataset
 public:
 
     Dataset();
-    Dataset(int lenght, int cluster_number , float data_probability , float sigma_cluster );
+    Dataset(int length, int cluster_number, float base_probability, float cluster_sigma);
     ~Dataset();
 
     /**
@@ -30,6 +30,7 @@ public:
 
     // Setter methods
 
+    void set_length(int _l);
     void set_probability(float _p);
     void set_clusternumber(int _n);
     void set_clustersigma(float _sigma);

@@ -62,7 +62,7 @@ Dataset::Dataset()
     std::cin >> cp;
     while(cp > l | cp < 0)
     {
-        std::cerr << "ERROR: probability can not be greater than dataset length or less than zero. Please insert again: " << std::endl;
+        std::cerr << "ERROR: sigma can not be greater than dataset length or less than zero. Please insert again: " << std::endl;
         std::cin >> cp;
     }
 
@@ -75,12 +75,42 @@ Dataset::Dataset()
 /**
  * cluster are generated gaussian like 
 */
-Dataset::Dataset(int _l, int _n, float _p, float _cp)
+Dataset::Dataset(int length, int cluster_number, float base_probability, float cluster_sigma)
 {
-    l = _l;
-    n = _n;
-    p = _p;
-    cp = _cp;
+    if(length>0)
+    {
+        l = length;
+    }
+    else
+    {
+        std::cerr << "ERROR: length of dataset cannot be less than 0." << std::endl;
+    }
+
+    if(base_probability>0 & base_probability<1)
+    {
+        p = base_probability;
+    }
+    else
+    {
+        std::cerr << "ERROR: probability can not be greater than one or less than zero." << std::endl;
+    }
+
+    if(cluster_number>0 & cluster_number<l)
+    {
+    n = cluster_number;
+    }
+    else{
+        std::cerr << "ERROR: number of cluster can not exceed dataset length or be less than zero." << std::endl;
+    }
+
+    if(cluster_sigma>0 & cluster_sigma<l)
+    {
+        cp = cluster_sigma;
+    }
+    else
+    {
+        std::cerr << "ERROR: sigma can not be greater than dataset length or less than zero." << std::endl;
+    }
 
     regenerate();
 }
@@ -157,19 +187,52 @@ void Dataset::print_csv(std::string filename)
 
 // Setter methods
 
+void Dataset::set_length(int _l)
+{
+    if(_l>0)
+    {
+        l = _l;
+    }
+    else
+    {
+        std::cerr << "ERROR: length of dataset cannot be less than 0." << std::endl;
+    }
+}
+
 void Dataset::set_probability(float _p)
 {
-    p = _p;
+    if(_p>0 & _p<1)
+    {
+        p = _p;
+    }
+    else
+    {
+        std::cerr << "ERROR: probability can not be greater than one or less than zero." << std::endl;
+    }
 }
 
 void Dataset::set_clusternumber(int _n)
 {
+    if(_n>0 & _n<l)
+    {
     n = _n;
+    }
+    else{
+        std::cerr << "ERROR: number of cluster can not exceed dataset length or be less than zero." << std::endl;
+    }
 }
 
 void Dataset::set_clustersigma(float _sigma)
 {
-    cp = _sigma;
+    if(_sigma>0 & _sigma<l)
+    {
+        cp = _sigma;
+    }
+    else
+    {
+        std::cerr << "ERROR: sigma can not be greater than dataset length or less than zero." << std::endl;
+    }
+
 }
 
 
