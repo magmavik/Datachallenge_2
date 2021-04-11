@@ -1,6 +1,7 @@
 #include <iostream>     // std::cout;
 #include <vector>       // std::vector
 #include <algorithm>    // std::sort
+#include <fstream>
 
 
 class data_cluster

@@ -61,8 +61,7 @@ void data_cluster::create_histogram()
 
     int max = *_dist.end();
 
-    std::cout << max << std::endl;
-    float step = static_cast<float>(max)/static_cast<float>(N_step);
+    data_cluster::_data_step = static_cast<float>(max)/static_cast<float>(N_step);
 
     int k = 0;
     _hist.resize(N_step);
@@ -74,7 +73,7 @@ void data_cluster::create_histogram()
         int i = std::distance(_hist.begin(), it);
         for(k ; k < _dist.size(); k++)
         {
-            if(_dist[k] <= (i + 1)* step)
+            if(_dist[k] <= (i + 1)* _data_step)
             {
 
                 *it += 1;
@@ -89,10 +88,26 @@ void data_cluster::create_histogram()
 
     for(int i = 0; i < N_step; i++)
     {
-        std::cout << "from " << static_cast<float>(i * step) << " to " 
-                             << static_cast<float>((i+1)*step) 
+        std::cout << "from " << static_cast<float>(i * _data_step) << " to " 
+                             << static_cast<float>((i+1)*_data_step) 
                              << ":" << _hist[i] << std::endl; 
     }
 }
 
 
+void data_cluster::print_distance_csv()
+{
+    std::ofstream of("./histogram.csv");
+    of << "index,min,max,element\n";
+    for( auto it = _hist.begin(); it != _hist.end(); ++it )
+    {
+        int i = std::distance(_hist.begin(),it);
+        of << i                 << ","
+           << (i * _data_step)  << ","
+           << ((i+1)*_data_step)<< ","
+           << *it               << "\n";
+    }
+
+
+
+}

@@ -11,6 +11,7 @@ int main()
     data_cluster clust(data.get_items(),  data.get_length());
 
     clust.create_histogram();
+    clust.print_distance_csv();
     
 
 
