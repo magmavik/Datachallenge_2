@@ -35,8 +35,8 @@
 
 #			     +++ BASE VARIABLES +++
 CC = g++
-TARGET = independent
-OBJ_DIR = obj
+TARGET = main
+OBJ_DIR = ./
 #LIBS = -I/usr/include/libdrm -lglfw -ldl -lGL
 LIBS =
 
@@ -59,7 +59,7 @@ all: $(TARGET)
 	@echo ""
 	@echo "o--{=========> Makefile salutes you <=========}--o"
 	@echo ""
-	./$(TARGET)
+# ./$(TARGET)
 
 $(TARGET):  $(OBJ)
 	@echo ""

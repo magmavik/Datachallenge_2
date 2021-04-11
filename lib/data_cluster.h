@@ -6,14 +6,26 @@
 class data_cluster
 {
     public:
-        const int N_step = 20;
+        const static int N_step = 7;
         // constructor
-        data_cluster(std::vector<bool>, int );
+        data_cluster(std::vector<bool> data, int data_length );
         ~data_cluster();
 
-        // methods
+        /**
+         * create a vector of distane between point in input vector 
+         */
         void calc_distance_distribution();  // calulate distance bertween elements
-        void print_distance_histogram();    // format and print dist as histogram
+
+        /**
+         * format data as histogram column  
+         */
+        void create_histogram();
+
+        /**
+         * Create or update a csv file with data organized as histogram 
+         */
+        void print_distance_csv();   
+
 
 
     private:
@@ -22,6 +34,7 @@ class data_cluster
         std::vector<int>   _hist;
         
         int _len;
+        float _data_step;
 
         bool ERROR = false;
 

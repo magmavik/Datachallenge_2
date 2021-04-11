@@ -4,11 +4,14 @@
 
 int main()
 {
-    Dataset data(10000,0.001);
+    Dataset data(10000,0,0.2,0);
 
-    data_cluster clust(data.get_data_vector(),  data.get_data_length());
+    //data.print();
 
-    clust.print_distance_histogram();
+    data_cluster clust(data.get_items(),  data.get_length());
+
+    clust.create_histogram();
+    
 
 
     return 0;

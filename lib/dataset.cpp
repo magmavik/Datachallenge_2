@@ -72,6 +72,9 @@ Dataset::Dataset()
 
 }
 
+/**
+ * cluster are generated gaussian like 
+*/
 Dataset::Dataset(int _l, int _n, float _p, float _cp)
 {
     l = _l;
