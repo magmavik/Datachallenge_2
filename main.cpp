@@ -4,9 +4,9 @@
 
 int main()
 {
-    Dataset data(10000,0,0.2,0);
+    Dataset::initialize_seed();
+    Dataset data(100,0,0.2,0);
 
-    //data.print();
 
     data_cluster clust(data.get_items(),  data.get_length());
 
