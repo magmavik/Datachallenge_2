@@ -28,12 +28,13 @@ float randomGauss(float mu, float sigma)
 
 }
 
-
+void Dataset::initialize()
+{
+    srand(time(NULL));
+}
 
 Dataset::Dataset()
 {
-    srand(time(NULL));
-
     std::cout << "Insert lenght of generating dataset: ";
     std::cin >> l;
     while(l <= 0)

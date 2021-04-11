@@ -14,6 +14,8 @@ class Dataset
 {
 public:
 
+    static void initialize();
+
     Dataset();
     Dataset(int length, int cluster_number, float base_probability, float cluster_sigma);
     ~Dataset();
