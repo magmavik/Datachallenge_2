@@ -21,6 +21,7 @@ void stocastic_events::generate_events()
     
     std::uniform_real_distribution<double> unif(lower_bound,upper_bound);
     std::default_random_engine re;
+    
     for(int i = 0; i < N_success ;++i)
     {
         double rand_val = unif(re);

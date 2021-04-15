@@ -74,7 +74,7 @@ int events_list::size() const
 
 void events_list::print_list() const
 {
-    std::vector<double>::const_iterator it;
+    double_cit it;
     std::cout << "list: \n";
     for( it = _list.begin() ; it != _list.end(); ++it)
     {
@@ -82,6 +82,26 @@ void events_list::print_list() const
     }
 }
 
+
+void events_list::print_distance_csv() 
+{
+    std::ofstream of("./../distance_data.csv");
+    if(!of.good())
+    {
+        std::cerr << "ERROR: unable to create csv. Something went wrong.\n";
+        return; 
+    }
+    of << "index,distance\n";
+
+     std::sort(_list.begin(), _list.end());
+    double_it it;
+
+    for(it = _list.begin() ; it != (_list.end() - 1) ; ++ it)
+    {
+        of << std::distance(_list.begin(),it) << "," <<  (*(it + 1) - *it) << "\n";
+    }
+
+}
 
 
 /// non funzia don't know why"

@@ -4,7 +4,7 @@
 #include "math.h"
 
 /**
- * The class generate a series of events wich interact repulsively
+ * The class generate a series of events which interact repulsively
 */
 class repulsive_events : public events_list
 {

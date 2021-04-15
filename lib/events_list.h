@@ -4,12 +4,15 @@
 
 #include <iostream>   //std::cout
 #include <vector>     //std::vector
-#include <algorithm>  //std::max_element
+#include <algorithm>  //std::max_element std::sort
+#include <fstream>    //std::ofstream
 
 
 class events_list{
     public:
-        typedef std::vector<double> double_vec;
+        typedef std::vector<double>           double_vec;
+        typedef std::vector<double>::const_iterator double_cit;
+        typedef std::vector<double>::iterator double_it;
     
     // constructor & destructor
         events_list();
@@ -31,8 +34,9 @@ class events_list{
         double     get_list_element(const int) const;
 
     //methods and other
-        int         size()       const;
-        void        print_list() const;
+        int     size()       const;
+        void    print_list() const;
+        void    print_distance_csv();    
 
         // da implementare appena si scopre l'errore
         // double_vec  operator[](int i) const;
@@ -43,7 +47,7 @@ class events_list{
     private:
         double      _list_range = 0;   // range between events
         int         _N_success  = 0;     // number of success
-        std::vector<double>  _list;  // list of success between 0-_list_range
+        double_vec  _list;  // list of success between 0-_list_range
 };
 
 
