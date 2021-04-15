@@ -1,4 +1,5 @@
 #include "events_list.h"
+#include <random>
 
 // ======== constructor =========//
 events_list::events_list()
@@ -75,13 +76,18 @@ int events_list::size() const
 void events_list::print_list() const
 {
     double_cit it;
-    std::cout << "list: \n";
+    std::cout << std::endl << "list: \n";
     for( it = _list.begin() ; it != _list.end(); ++it)
     {
         std::cout << " " << *it << " ";
     }
+    std::cout << std::endl;
 }
 
+void events_list::sort_list()
+{
+    std::sort(_list.begin(), _list.begin()+_N_success);
+}
 
 void events_list::print_distance_csv() 
 {
@@ -93,7 +99,7 @@ void events_list::print_distance_csv()
     }
     of << "index,distance\n";
 
-     std::sort(_list.begin(), _list.end());
+    std::sort(_list.begin(), _list.end());
     double_it it;
 
     for(it = _list.begin() ; it != (_list.end() - 1) ; ++ it)
@@ -101,6 +107,17 @@ void events_list::print_distance_csv()
         of << std::distance(_list.begin(),it) << "," <<  (*(it + 1) - *it) << "\n";
     }
 
+}
+
+void events_list::add_gaussian_noise(float sigma)
+{
+    std::default_random_engine generator;
+    std::normal_distribution<double> dist(0.0, sigma);
+
+    for(int i=0; i<_list.size(); i++)
+    {
+        _list[i] += dist(generator);
+    }
 }
 
 

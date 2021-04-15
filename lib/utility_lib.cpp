@@ -26,4 +26,16 @@ double gen_expo(double lambda){
     return -log(1- u) / lambda;
 }
 
+int sgn(double x)
+{
+    if(x > 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return -1;
+    }
+}
+
 

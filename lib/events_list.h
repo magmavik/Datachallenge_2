@@ -36,7 +36,9 @@ class events_list{
     //methods and other
         int     size()       const;
         void    print_list() const;
-        void    print_distance_csv();    
+        void    sort_list();
+        void    print_distance_csv();
+        void    add_gaussian_noise(float sigma);
 
         // da implementare appena si scopre l'errore
         // double_vec  operator[](int i) const;
@@ -44,7 +46,7 @@ class events_list{
 
     
     
-    private:
+    protected:
         double      _list_range = 0;   // range between events
         int         _N_success  = 0;     // number of success
         double_vec  _list;  // list of success between 0-_list_range

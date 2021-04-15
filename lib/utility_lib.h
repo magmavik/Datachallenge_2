@@ -30,5 +30,10 @@ float my_round(const float);
  */
 double gen_expo(double lambda);
 
+/**
+ * sign function
+ */
+int sgn(double x);
+
 
 #endif
