@@ -1,19 +1,11 @@
 #include <iostream>
-#include "./lib/dataset.h"
-#include "./lib/data_cluster.h"
+// #include "./lib/events_list.h"
+#include "./lib/stocastic_events.h"
 
 int main()
 {
-    Dataset::initialize_seed();
-    Dataset data(100,0,0.2,0);
-
-
-    data_cluster clust(data.get_items(),  data.get_length());
-
-    clust.create_histogram();
-    clust.print_distance_csv();
-    
-
-
+    stocastic_events stocazz(1000,10);
+    stocazz.generate_events();
+    stocazz.print_list();
     return 0;
 }
