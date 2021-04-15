@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <math.h> //log
 
 template<typename T, typename A>
 void print_vector(std::vector<T,A> const &inv)
@@ -22,4 +23,12 @@ float my_round(const float);
 // {
 //     return static_cast<int>(i * 10 + 0.5) / 10.0;
 // }
+
+
+/**
+ * generate number in esponential distribution with parameter lamda 
+ */
+double gen_expo(double lambda);
+
+
 #endif

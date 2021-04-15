@@ -20,3 +20,10 @@ float my_round(const float i)
     return static_cast<int>(i * 10 + 0.5) / 10.0;
 }
 
+double gen_expo(double lambda){
+    double u;
+    u = rand() / (RAND_MAX + 1.0);
+    return -log(1- u) / lambda;
+}
+
+
