@@ -109,16 +109,64 @@ void events_list::print_distance_csv()
 
 }
 
-void events_list::add_gaussian_noise(float sigma)
+void events_list::print_distance_csv(const std::string name_file) 
 {
-    std::default_random_engine generator;
-    std::normal_distribution<double> dist(0.0, sigma);
-
-    for(int i=0; i<_list.size(); i++)
+    std::string PATH = "./";
+    std::ofstream of(PATH + name_file + ".csv");
+    if(!of.good())
     {
-        _list[i] += dist(generator);
+        std::cerr << "ERROR: unable to create csv. Something went wrong.\n";
+        return; 
     }
+    of << "index,distance\n";
+
+    std::sort(_list.begin(), _list.end());
+    double_it it;
+
+    for(it = _list.begin() ; it != (_list.end() - 1) ; ++ it)
+    {
+        double dist = static_cast<double> (*(it + 1) - *it);
+        of << std::distance(_list.begin(),it) << ","  
+           << dist <<"\n";
+    }
+
 }
+
+void events_list::print_csv(const std::string name_file) 
+{
+    std::string PATH = "./";
+    std::ofstream of(PATH + name_file + ".csv");
+    if(!of.good())
+    {
+        std::cerr << "ERROR: unable to create csv. Something went wrong.\n";
+        return; 
+    }
+    of << "index,element\n";
+
+    std::sort(_list.begin(), _list.end());
+    double_it it;
+
+    for(it = _list.begin() ; it != (_list.end() - 1) ; ++ it)
+    {
+        
+        of << std::distance(_list.begin(),it) << ","  
+           << *it <<"\n";
+    }
+
+}
+
+// void events_list::add_gaussian_noise(float sigma)
+// {
+//     std::default_random_engine generator;
+//     std::normal_distribution<double> dist(0.0, sigma);
+
+//     for(int i=0; i<_list.size(); i++)
+//     {
+//         _list[i] += dist(generator);
+//     }
+// }
+
+
 
 
 /// non funzia don't know why"
@@ -142,7 +190,6 @@ void events_list::add_gaussian_noise(float sigma)
 // //     }
 // //     else return _events_list[i];
 // // }
-
 
 
 

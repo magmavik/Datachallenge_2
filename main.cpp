@@ -1,13 +1,32 @@
 #include <iostream>
-// #include "./lib/events_list.h"
+#include <stdlib.h>
+#include "./lib/stocastic_events.h"
 #include "./lib/repulsive_events.h"
 
-int main()
+int main(int argc, char **argv)
 {
-    srand(time(NULL));
-    repulsive_events stocazz(1000,100,5,10);
-    stocazz.generate_events();
-    stocazz.add_gaussian_noise(5);
-    stocazz.print_list();
+    double range = 1000;
+    int N_success = 10000; 
+
+
+    if( !strcmp(argv[1], "-r") )
+    {
+        std::cout << "hello world";
+        double sigma = atof(argv[2]);
+        repulsive_events events(range,N_success,sigma);
+        events.generate_events();
+        events.sort_list();
+        events.print_list();
+        events.print_distance_csv("prova_1");
+    }
+    if ( !strcmp(argv[1], "-s") )
+    {
+        std::cout << "stocastic series selected \n";
+        stocastic_events events(range,N_success);
+        events.generate_events();
+        events.sort_list();
+        events.print_list();
+        events.print_distance_csv("prova_1");
+    }
     return 0;
 }

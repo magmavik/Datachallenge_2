@@ -6,13 +6,13 @@
 #include <vector>     //std::vector
 #include <algorithm>  //std::max_element std::sort
 #include <fstream>    //std::ofstream
-
+#include <string.h>   //string
 
 class events_list{
     public:
-        typedef std::vector<double>           double_vec;
+        typedef std::vector<double>                 double_vec;
         typedef std::vector<double>::const_iterator double_cit;
-        typedef std::vector<double>::iterator double_it;
+        typedef std::vector<double>::iterator       double_it;
     
     // constructor & destructor
         events_list();
@@ -37,8 +37,10 @@ class events_list{
         int     size()       const;
         void    print_list() const;
         void    sort_list();
-        void    print_distance_csv();
-        void    add_gaussian_noise(float sigma);
+        void    print_distance_csv() ;
+        void    print_distance_csv(const std::string name_file) ;
+        void    print_csv(const std::string name_file); 
+        //void    add_gaussian_noise(float sigma);
 
         // da implementare appena si scopre l'errore
         // double_vec  operator[](int i) const;
