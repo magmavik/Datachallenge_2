@@ -24,7 +24,6 @@ void stocastic_events::generate_events()
     
     for(int i = 0; i < N_success ;++i)
     {
-        double rand_val = unif(re);
-        set_list_element(i,rand_val);
+        _list[i] = unif(re);
     }
 }

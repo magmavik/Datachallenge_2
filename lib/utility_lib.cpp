@@ -26,16 +26,19 @@ double gen_expo(double lambda){
     return -log(1- u) / lambda;
 }
 
-int sgn(double x)
-{
-    if(x > 0)
-    {
-        return 1;
-    }
-    else
-    {
-        return -1;
-    }
-}
+/**
+ * sign function
+ */
+
+// template< typename T> 
+// double add_gaussian_noise( T sigma)
+// {
+//     std::default_random_engine generator;
+//     std::normal_distribution<T> dist(0.0, sigma);
+
+//     return dist(generator);
+
+// }
+
 
 
