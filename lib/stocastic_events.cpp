@@ -1,17 +1,20 @@
 #include "stocastic_events.h"
 
-stocastic_events::stocastic_events(double range, int events)
+stocastic_events::stocastic_events(int range, int events)
     :events_list(range, events)
+{
+}
+stocastic_events::stocastic_events(int range, int events, int N_generations)
+    :events_list(range, events, N_generations)
 {
 }
 
 void stocastic_events::generate_events()
 {
-    double lower_bound = 0;
-    double upper_bound = get_list_range();
-    int N_success      = get_N_succes();
+    int lower_bound = 0;
+    int upper_bound = get_list_range();
 
-    if(upper_bound - lower_bound <= 0 or N_success < 0 )
+    if(upper_bound - lower_bound <= 0 or _N_success < 0 )
     {
         std::cerr << "ERROR: in " << __FUNCTION__ << "\n"
                   << "       invalid input for range or number of success. \n"
@@ -19,12 +22,14 @@ void stocastic_events::generate_events()
         return;  
     }
     
-    std::uniform_real_distribution<double> unif(lower_bound,upper_bound);
+    std::uniform_real_distribution<float> unif(lower_bound,upper_bound);
     std::default_random_engine re;
-    
-    for(int i = 0; i < N_success ;++i)
+    for(int j = 0; j < _N_generation; ++j)
     {
-        double rand_val = unif(re);
-        set_list_element(i,rand_val);
+        for(int i = 0; i < _N_success ;++i)
+        {
+            _mat[j][i] = static_cast<int>( unif(re) );
+        }
+
     }
 }
