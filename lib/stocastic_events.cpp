@@ -12,7 +12,7 @@ stocastic_events::stocastic_events(int range, int events, int N_generations)
 void stocastic_events::generate_events()
 {
     int lower_bound = 0;
-    int upper_bound = get_list_range();
+    int upper_bound = get_range();
 
     if(upper_bound - lower_bound <= 0 or _N_success < 0 )
     {

@@ -6,45 +6,46 @@
  * constructor. by default sigma of gaussian rumor is set as 
  * range/100 
  */ 
-cluster_events::cluster_events(double range, int events, int cluster_number, float cluster_sigma)
-    :events_list(range,events), _cluster_number(cluster_number), _cluster_sigma(cluster_sigma)
+cluster_events::cluster_events(int range, int events, int cluster_number, float cluster_sigma, int generation)
+    :events_list(range,events,generation), _cluster_number(cluster_number), _cluster_sigma(cluster_sigma) 
 {
 
 }
 
 void cluster_events::generate_events()
 {
-    _list.clear();
+    _mat.clear();
 
     // random gauss generator.
     std::default_random_engine generator;
     
-    int* _cluster_positions;
-    std::normal_distribution<double>* _cluster_distributions;   // initialize several distributions, one for each cluster
+    int* cluster_positions;
+    std::normal_distribution<double>* cluster_distributions;   // initialize several distributions, one for each cluster
 
-    _cluster_positions = new int[_cluster_number];
-    _cluster_distributions = new std::normal_distribution<double>[_cluster_number];
-    for(int i=0; i<_cluster_number; i++)
+    cluster_positions = new int[_cluster_number];
+    cluster_distributions = new std::normal_distribution<double>[_cluster_number];
+    for(int gen = 0; gen < _N_generation; ++gen)
     {
-        _cluster_positions[i] = round(rand()/(RAND_MAX+1.0)*_list_range);
-        _cluster_distributions[i] = std::normal_distribution<double>(_cluster_positions[i], _cluster_sigma);
-        std::cout << _cluster_positions[i] << std::endl;
-    }
-
-    for(int i=0; i<_N_success; i++)
-    {
-        int appo = round(rand()/(RAND_MAX+1.0)*(_cluster_number-1));
-        int insert = 0;
-        do
+        for(int i=0; i<_cluster_number; i++)
         {
-        insert = round(_cluster_distributions[appo](generator));
-        }while(insert<0 or insert >= _list_range or std::find(_list.begin(), _list.end(), insert) != _list.end());
-        _list.push_back(insert);
+            cluster_positions[i] = round(rand()/(RAND_MAX+1.0)*_range);
+            cluster_distributions[i] = std::normal_distribution<double>(cluster_positions[i], _cluster_sigma);
+        }
+
+        for(int i=0; i<_N_success; i++)
+        {
+            int appo = round(rand()/(RAND_MAX+1.0)*(_cluster_number-1));
+            int insert = 0;
+            do
+            {
+                insert = round(cluster_distributions[appo](generator));
+            }while(insert<0 or insert >= _range or std::find(_mat[gen].begin(), _mat[gen].end(), insert) == _mat[gen].end());
+            _mat[gen].push_back(insert);
+        }
     }
 
     sort_list();
 
-    delete[] _cluster_positions;
-    delete[] _cluster_distributions;
+    // delete[] cluster_positions;
+    // delete[] cluster_distributions;
 }
-

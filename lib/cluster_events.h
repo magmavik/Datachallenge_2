@@ -10,7 +10,7 @@ class cluster_events : public events_list
 {
     public:
 
-        cluster_events(double range, int events, int cluster_number, float cluster_sigma);
+        cluster_events(int range, int events, int cluster_number, float cluster_sigma, int generation);
         
     // methods 
         void generate_events();

@@ -26,13 +26,13 @@ class events_list{
 
     // setter and getter
 
-        void set_list_range(int);
+        void set_range(int);
         void set_N_succes(const int);
         void set_event_list(int_vec);
         void set_list_element(int pos , int value);
         void set_mat_element(int pos, int generation, int value);
 
-        int     get_list_range() const;
+        int     get_range() const;
         int        get_N_succes()   const;
         int_vec get_event_list(int generation) const;
         int     get_element(const int) const;
@@ -55,10 +55,10 @@ class events_list{
     
     
     protected:
-        int         _list_range = 0;   // range between events
+        int         _range = 0;   // range between events
         int         _N_success  = 0;     // number of success
         int         _N_generation = 0;
-        //int_vec  _list;  // list of success between 0-_list_range
+        //int_vec  _list;  // list of success between 0-_range
         int_mat _mat;
 };
 
