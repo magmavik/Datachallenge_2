@@ -9,20 +9,20 @@ events_list::events_list()
 
 // events_list::events_list(int_vec events_list)
 //     :_mat[0](events_list), _N_success(events_list.size()),
-//     _list_range( *std::max_element(events_list.begin(), events_list.end()))
+//     _range( *std::max_element(events_list.begin(), events_list.end()))
 // {
 //     _N_generation = 1;
 // }
 
 events_list::events_list(int list_range, int N_success )
-    : _list_range(list_range),_N_success(N_success)
+    : _range(list_range),_N_success(N_success)
 {
     _mat[0].resize(_N_success);
     _N_generation = 1;
 }
 
 events_list::events_list(int list_range, int N_success, int N_generation)
-    : _list_range(list_range), _N_success(N_success), _N_generation(N_generation)
+    : _range(list_range), _N_success(N_success), _N_generation(N_generation)
 {
     int_point_it it;
     _mat.resize( _N_generation);
@@ -39,9 +39,9 @@ events_list::events_list(int list_range, int N_success, int N_generation)
 //======================================//
 //========= setter & getter ============//
 
-void events_list::set_list_range(const int list_range)
+void events_list::set_range(const int list_range)
 {
-    _list_range = list_range;
+    _range = list_range;
 }
         
 void events_list::set_N_succes(const int N_success)
@@ -64,9 +64,9 @@ void events_list::set_mat_element(int pos, int generation, int value)
     _mat[generation][pos] = value;
 }
 
-int events_list::get_list_range() const
+int events_list::get_range() const
 {
-    return _list_range;
+    return _range;
 }
 int events_list::get_N_succes() const
 {

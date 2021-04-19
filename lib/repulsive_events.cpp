@@ -23,9 +23,9 @@ void repulsive_events::generate_events()
     for(int gen = 0; gen < _N_generation; ++gen)
     {
         int data_min = 0;
-        int data_max = _list_range; 
+        int data_max = _range; 
 
-        int step = static_cast<double>(_list_range/ _N_success);
+        int step = static_cast<double>(_range/ _N_success);
  
 
         if(data_max - data_min <= 0 or _N_success < 0 or _sigma < 0)
@@ -49,7 +49,7 @@ void repulsive_events::generate_events()
 
 
     // int_data_min = 0;
-    // int_data_max = get_list_range();
+    // int_data_max = get_range();
     // int    N_success = get_N_succes();
 
     // if(_data_max - _data_min <= 0 or N_success < 0 or _sigma < 0)
@@ -85,7 +85,7 @@ void repulsive_events::generate_events()
     // {
     //     for(int i=0; i<N_success; i++)
     //     {
-    //         intforce_norm = static_cast<double>(1./(_list_range* 10));
+    //         intforce_norm = static_cast<double>(1./(_range* 10));
     //         _steps[i] += 0.001*_force*sgn(_median_step - _steps[i]);
     //     }
 
